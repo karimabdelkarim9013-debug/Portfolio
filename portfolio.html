@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Karim Abd Elkarim - Portfolio & CV</title>
+  <link rel="icon" href="web.icon.png" type="image/x-icon" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+:root{
+  --bg:#030303;
+  --panel:#0c0c0c;
+  --panel2:#111111;
+  --border:#1b1b1b;
+
+  --text:#f2f2f2;
+  --muted:#a8a8a8;
+
+  --accent:#00ff88;
+  --glow:rgba(0,255,136,0.25);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'JetBrains Mono', monospace;
+  background:var(--bg);
+  color:var(--text);
+
+  padding:50px 20px;
+  max-width:1000px;
+  margin:auto;
+
+  line-height:1.7;
+}
+
+/* =====================
+   TITLES
+===================== */
+h1{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:25px;
+  letter-spacing:1px;
+}
+
+h2{
+  text-align:center;
+  font-size:20px;
+  margin:35px 0 20px;
+  color:var(--accent);
+}
+
+/* =====================
+   BACK BUTTON
+===================== */
+.back-btn{
+  display:block;
+  width:200px;
+  margin:0 auto 40px;
+  padding:12px 20px;
+
+  text-align:center;
+  text-decoration:none;
+
+  color:var(--accent);
+  border:1px solid var(--accent);
+
+  border-radius:10px;
+
+  transition:0.3s;
+}
+
+.back-btn:hover{
+  background:var(--accent);
+  color:#000;
+  transform:scale(1.05);
+}
+
+/* =====================
+   GRID
+===================== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+/* =====================
+   CARD (GLASS DEV STYLE)
+===================== */
+.card{
+  background:linear-gradient(180deg,var(--panel),#090909);
+  border:1px solid var(--border);
+  border-radius:12px;
+
+  padding:10px;
+
+  transition:0.3s;
+  cursor:pointer;
+
+  position:relative;
+  overflow:hidden;
+}
+
+/* top glow line */
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  height:2px;
+  width:100%;
+  background:var(--accent);
+  opacity:0.35;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:0 0 25px var(--glow);
+}
+
+/* IMAGE */
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+
+  border-radius:10px;
+
+  transition:0.4s;
+  filter:brightness(0.85);
+}
+
+.card:hover img{
+  transform:scale(1.06);
+  filter:brightness(1);
+}
+
+/* =====================
+   CV SECTION
+===================== */
+.cv-section{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px;
+
+  padding:25px;
+  margin:50px auto;
+
+  text-align:center;
+
+  box-shadow:0 0 20px rgba(0,255,136,0.08);
+  transition:0.3s;
+}
+
+.cv-section:hover{
+  transform:translateY(-5px);
+  border-color:var(--accent);
+  box-shadow:0 0 30px var(--glow);
+}
+
+.cv-section a{
+  display:inline-block;
+  margin-top:15px;
+
+  padding:12px 22px;
+
+  border:1px solid var(--accent);
+  color:var(--accent);
+
+  border-radius:10px;
+  text-decoration:none;
+
+  transition:0.3s;
+}
+
+.cv-section a:hover{
+  background:var(--accent);
+  color:#000;
+  transform:scale(1.05);
+}
+
+/* =====================
+   POPUP (KEEP YOUR LOGIC)
+===================== */
+#popup{
+  position:fixed;
+  display:none;
+  justify-content:center;
+  align-items:center;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100%;
+
+  background:rgba(0,0,0,0.9);
+
+  z-index:9999;
+}
+
+#popup img{
+  max-width:90%;
+  max-height:90%;
+
+  border-radius:12px;
+
+  box-shadow:0 0 40px var(--glow);
+
+  opacity:0;
+  transform:scale(0.9);
+
+  transition:0.4s;
+}
+
+#popup img.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* NAV BUTTONS */
+#closeBtn,#prevBtn,#nextBtn{
+  position:absolute;
+  font-size:40px;
+  color:var(--accent);
+
+  cursor:pointer;
+
+  user-select:none;
+
+  transition:0.3s;
+}
+
+#closeBtn{
+  top:20px;
+  right:30px;
+}
+
+#prevBtn{
+  left:30px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+#nextBtn{
+  right:30px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+#closeBtn:hover,
+#prevBtn:hover,
+#nextBtn:hover{
+  transform:scale(1.2);
+  color:#fff;
+}
+
+.achievement-pro{
+  max-width:1100px;
+  margin:90px auto;
+  padding:0 20px;
+}
+
+.achievement-pro h2{
+  text-align:center;
+  color:var(--accent);
+  font-size:24px;
+  margin-bottom:35px;
+}
+
+/* MAIN WRAPPER */
+.achievement-wrapper{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+
+  background:linear-gradient(180deg,var(--panel),#0a0a0a);
+  border:1px solid var(--border);
+  border-radius:16px;
+
+  padding:25px;
+
+  transition:0.3s;
+
+  box-shadow:0 0 25px rgba(4, 75, 42, 0.08);
+}
+
+.achievement-wrapper:hover{
+  border-color:var(--accent);
+  box-shadow:0 0 40px rgba(5, 42, 24, 0.788);
+}
+
+/* BADGE */
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  background:var(--accent);
+  color:#000;
+
+  border-radius:20px;
+  font-size:12px;
+
+  margin-bottom:10px;
+
+  box-shadow:0 0 15px rgba(5, 87, 49, 0.4);
+}
+
+/* TITLE */
+.achievement-info h3{
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.achievement-info p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* IMPACT BOXES */
+.impact{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.impact-box{
+  flex:1;
+  min-width:120px;
+
+  background:var(--panel2);
+  border:1px solid var(--border);
+
+  border-radius:12px;
+  padding:10px;
+
+  text-align:center;
+
+  transition:0.3s;
+}
+
+.impact-box:hover{
+  transform:translateY(-5px);
+  border-color:var(--accent);
+}
+
+.impact-box span{
+  font-size:18px;
+}
+
+.impact-box p{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* GALLERY */
+.achievement-gallery-pro{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* MAIN IMAGE */
+.main-img img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+
+  border-radius:12px;
+
+  border:1px solid var(--border);
+
+  transition:0.3s;
+}
+
+.main-img img:hover{
+  transform:scale(1.03);
+  border-color:var(--accent);
+}
+
+/* THUMBNAILS */
+.thumbs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+
+.thumbs img{
+  width:100%;
+  height:60px;
+  object-fit:cover;
+
+  border-radius:8px;
+
+  border:1px solid var(--border);
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.thumbs img:hover{
+  transform:scale(1.08);
+  border-color:var(--accent);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .achievement-wrapper{
+    grid-template-columns:1fr;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>Portfolio & Certificates</h1>
+  <a href="index.html" class="back-btn">Back to Home</a>
+
+
+<section class="achievement-pro">
+
+  <h2>Featured Achievement</h2>
+
+  <div class="achievement-wrapper">
+
+    <!-- LEFT: INFO -->
+    <div class="achievement-info">
+
+      <span class="badge">🥉 Bronze Medal Winner</span>
+
+      <h3>Gate of Time – VR Tourism Project</h3>
+
+      <p>
+        A virtual reality tourism experience designed to present Egyptian heritage in an interactive and immersive way,
+        combining storytelling, culture, and modern technology.
+      </p>
+
+      <div class="impact">
+
+        <div class="impact-box">
+          <span></span>
+          <p>Heritage Innovation</p>
+        </div>
+
+        <div class="impact-box">
+          <span></span>
+          <p>Judges Presentation</p>
+        </div>
+
+        <div class="impact-box">
+          <span></span>
+          <p>Cultural Impact</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT: GALLERY -->
+    <div class="achievement-gallery-pro">
+
+      <div class="main-img">
+        <img src="11.jpeg" alt="">
+      </div>
+
+      <div class="thumbs">
+        <img src="3.jpeg" alt="">
+        <img src="1.png" alt="">
+        <img src="2.jpeg" alt="">
+        <img src="22.jpeg" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+  <!-- شهادات -->
+  <h2>Certificates</h2>
+  <div class="grid">
+    <div class="card"><img src="c.jpg.jpg" alt="Certificate 1" /></div>
+    <div class="card"><img src="a.jpg.jpg" alt="Certificate 2" /></div>
+    <div class="card"><img src="r.jpg.jpg" alt="Certificate 3" /></div>
+    <div class="card"><img src="t.jpg.jpg" alt="Certificate 4" /></div>
+    <div class="card"><img src="f.jpg.jpg" alt="Certificate 5" /></div>
+    <div class="card"><img src="g.jpg.jpg" alt="Certificate 6" /></div>
+     <div class="card"><img src="33.jpeg" alt="Certificate 3" /></div>
+    <div class="card"><img src="44.jpeg" alt="Certificate 4" /></div>
+    <div class="card"><img src="66.jpeg" alt="Certificate 5" /></div>
+    <div class="card"><img src="77.jpeg" alt="Certificate 6" /></div>
+     <div class="card"><img src="88.jpeg" alt="Certificate 6" /></div>
+  </div>
+
+  
+  <!-- السيرة الذاتية -->
+  <section class="cv-section">
+    <h2>Curriculum Vitae (CV)</h2>
+    <p>You can download or view my CV here:</p>
+    <a href="Karim Abd Elkarim HAMIDA -CV-1.pdf" target="_blank" rel="noopener noreferrer">View / Download CV (PDF)</a>
+  </section>
+
+  <!-- عرض مكبّر -->
+  <div id="popup">
+    <span id="closeBtn">&times;</span>
+    <img id="popupImg" src="" alt="Expanded Image" />
+    <span id="prevBtn">&#10094;</span>
+    <span id="nextBtn">&#10095;</span>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll(".card img");
+    const popup = document.getElementById("popup");
+    const popupImg = document.getElementById("popupImg");
+    const closeBtn = document.getElementById("closeBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    let currentIndex = 0;
+    const imgArray = Array.from(images);
+
+    function showImage(index) {
+      popupImg.classList.remove("show");
+      setTimeout(() => {
+        popupImg.src = imgArray[index].src;
+        currentIndex = index;
+        popupImg.classList.add("show");
+      }, 100);
+    }
+
+    imgArray.forEach((img, index) => {
+      img.parentElement.addEventListener("click", () => {
+        popup.style.display = "flex";
+        showImage(index);
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        popup.style.display = "none";
+      }
+    });
+
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + imgArray.length) % imgArray.length;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % imgArray.length;
+      showImage(currentIndex);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karim Abd Elkarim - Home</title>
+  <link rel="icon" href="web.icon.png" type="image/x-icon">
+  <style>
+ @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+:root{
+  --bg:#030303;           /* أغمق من قبل */
+  --panel:#0c0c0c;
+  --panel2:#111111;
+  --border:#1c1c1c;
+
+  --text:#f1f1f1;
+  --muted:#b5b5b5;
+
+  --accent:#00ff88;      /* نيون أنضف من الأزرق */
+  --accent-glow:rgba(0,255,136,0.25);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'JetBrains Mono', monospace;
+  background:var(--bg);
+  color:var(--text);
+
+  font-size:17px;        /* 🔥 تكبير الخط */
+  line-height:1.75;
+
+  overflow-x:hidden;
+}
+
+/* ======================
+   LAYOUT
+====================== */
+.container{
+  max-width:950px;
+  margin:60px auto;
+  padding:0 20px;
+}
+
+/* ======================
+   PROFILE IMAGE (BETTER GLOW)
+====================== */
+.profile-pic{
+  display:block;
+  margin:0 auto;
+
+  width:170px;   /* 🔥 أكبر */
+  height:170px;
+
+  border-radius:50%;
+  border:2px solid var(--accent);
+
+  object-fit:cover;
+
+  box-shadow:
+    0 0 20px var(--accent-glow),
+    0 0 60px rgba(0,255,136,0.1);
+
+  transition:0.4s;
+}
+
+.profile-pic:hover{
+  transform:scale(1.06);
+  box-shadow:
+    0 0 35px var(--accent-glow),
+    0 0 90px rgba(0,255,136,0.15);
+}
+
+/* ======================
+   NAME
+====================== */
+h1{
+  text-align:center;
+  font-size:34px;   /* 🔥 أكبر بوضوح */
+  margin:20px 0 40px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+/* ======================
+   CARDS (VS CODE STYLE BUT PREMIUM)
+====================== */
+.about,
+.skills,
+.contact{
+  background:linear-gradient(180deg, var(--panel), #0a0a0a);
+
+  border:1px solid var(--border);
+  border-radius:12px;
+
+  padding:30px;
+  margin-bottom:35px;
+
+  transition:0.35s;
+  position:relative;
+}
+
+/* glow line */
+.about::before,
+.skills::before,
+.contact::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  height:2px;
+  width:100%;
+  background:var(--accent);
+  opacity:0.4;
+}
+
+.about:hover,
+.skills:hover,
+.contact:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.6),
+    0 0 25px var(--accent-glow);
+}
+
+/* ======================
+   TEXT SYSTEM
+====================== */
+h2{
+  font-size:20px;
+  color:var(--accent);
+  margin-bottom:15px;
+}
+
+p{
+  font-size:15px;   /* 🔥 أكبر */
+  color:var(--muted);
+}
+
+/* ======================
+   READ MORE
+====================== */
+.read-more-btn{
+  display:block;
+  margin:15px auto 0;
+
+  padding:10px 18px;
+
+  border:1px solid var(--accent);
+  background:transparent;
+
+  color:var(--accent);
+  border-radius:8px;
+
+  cursor:pointer;
+
+  font-family:'JetBrains Mono', monospace;
+
+  transition:0.3s;
+}
+
+.read-more-btn:hover{
+  background:var(--accent);
+  color:#000;
+  transform:scale(1.05);
+}
+
+.read-more-content{
+  display:none;
+  opacity:0;
+  transform:translateY(10px);
+  transition:0.4s ease;
+}
+
+.read-more-content.show{
+  display:block;
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ======================
+   SKILLS (NEON TAGS FIXED)
+====================== */
+.skills ul{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+}
+
+.skills li{
+  background:rgba(255,255,255,0.03);
+
+  border:1px solid var(--border);
+  color:var(--text);
+
+  padding:10px 16px;
+  border-radius:8px;
+
+  font-size:14px;
+
+  transition:0.3s;
+}
+
+.skills li:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  transform:scale(1.08);
+
+  box-shadow:0 0 15px var(--accent-glow);
+}
+
+/* ======================
+   CONTACT FORM
+====================== */
+input,textarea{
+  width:100%;
+  padding:13px;
+
+  margin-bottom:12px;
+
+  background:var(--panel2);
+  border:1px solid var(--border);
+
+  border-radius:10px;
+
+  color:var(--text);
+
+  font-size:15px;
+  font-family:'JetBrains Mono', monospace;
+}
+
+input:focus,textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 12px var(--accent-glow);
+}
+
+button[type="submit"]{
+  width:100%;
+  padding:13px;
+
+  background:transparent;
+  border:1px solid var(--accent);
+
+  color:var(--accent);
+
+  border-radius:10px;
+
+  font-size:15px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+button[type="submit"]:hover{
+  background:var(--accent);
+  color:#000;
+  transform:scale(1.03);
+}
+
+/* ======================
+   PORTFOLIO BUTTON
+====================== */
+.portfolio-btn{
+  display:block;
+  text-align:center;
+
+  margin:25px auto 60px;
+
+  padding:14px 24px;
+
+  border:1px solid var(--accent);
+
+  color:var(--accent);
+  text-decoration:none;
+
+  border-radius:10px;
+
+  font-size:15px;
+
+  transition:0.3s;
+}
+
+.portfolio-btn:hover{
+  background:var(--accent);
+  color:#000;
+  transform:scale(1.06);
+}
+
+.projects{
+  max-width:950px;
+  margin:60px auto;
+  padding:0 20px;
+}
+
+.projects h2{
+  text-align:center;
+  font-size:22px;
+  color:var(--accent);
+  margin-bottom:25px;
+}
+
+/* GRID */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.project-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px;
+
+  padding:14px;
+
+  transition:0.3s;
+}
+
+.project-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--accent);
+  box-shadow:0 0 25px rgba(0,255,136,0.12);
+}
+
+/* FRAME */
+.project-frame{
+  width:100%;
+  height:180px;
+
+  border-radius:10px;
+  border:1px solid rgba(0,255,136,0.25);
+
+  overflow:hidden;
+
+  margin-bottom:12px;
+
+  background:#111;
+}
+
+.project-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  transition:0.4s;
+  filter:brightness(0.85);
+}
+
+.project-card:hover .project-frame img{
+  transform:scale(1.07);
+  filter:brightness(1);
+}
+
+/* TEXT */
+.project-card h3{
+  font-size:15px;
+  margin-bottom:6px;
+}
+
+.project-card p{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+
+/* LINK */
+.project-card a{
+  color:var(--accent);
+  text-decoration:none;
+  font-size:13px;
+}
+
+.timeline{
+  max-width:900px;
+  margin:70px auto;
+  padding:0 20px;
+}
+
+.timeline h2{
+  text-align:center;
+  color:var(--accent);
+  font-size:22px;
+  margin-bottom:40px;
+}
+
+/* container line */
+.timeline-container{
+  position:relative;
+  padding-left:30px;
+  border-left:2px solid rgba(0,255,136,0.25);
+}
+
+/* each item */
+.timeline-item{
+  position:relative;
+  margin-bottom:30px;
+
+  opacity:0;
+  transform:translateY(20px);
+
+  animation:fadeUp 0.6s ease forwards;
+}
+
+/* delay for nice flow */
+.timeline-item:nth-child(1){animation-delay:0.1s;}
+.timeline-item:nth-child(2){animation-delay:0.2s;}
+.timeline-item:nth-child(3){animation-delay:0.3s;}
+.timeline-item:nth-child(4){animation-delay:0.4s;}
+.timeline-item:nth-child(5){animation-delay:0.5s;}
+
+/* dot */
+.dot{
+  position:absolute;
+  left:-38px;
+  top:5px;
+
+  width:12px;
+  height:12px;
+
+  background:var(--accent);
+  border-radius:50%;
+
+  box-shadow:0 0 15px var(--accent);
+}
+
+/* content box */
+.content{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+
+  padding:15px;
+
+  transition:0.3s;
+}
+
+.content:hover{
+  transform:translateX(5px);
+  border-color:var(--accent);
+  box-shadow:0 0 20px rgba(0,255,136,0.15);
+}
+
+.content h3{
+  font-size:15px;
+  margin-bottom:6px;
+}
+
+.content p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* animation */
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+.skills{
+  text-align:center;
+  margin:60px auto;
+  max-width:1000px;
+}
+
+.skills h2{
+  color:var(--accent);
+  margin-bottom:20px;
+}
+
+/* OUTER CONTAINER */
+.skills-marquee{
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--panel);
+  border-radius:12px;
+
+  padding:15px 0;
+
+  position:relative;
+}
+
+/* MOVING TRACK */
+.skills-track{
+  display:flex;
+  gap:40px;
+  width:max-content;
+
+  animation:scrollSkills 18s linear infinite;
+}
+
+/* SKILL ITEM */
+.skills-track span{
+  color:var(--text);
+  font-size:14px;
+
+  padding:8px 14px;
+
+  border:1px solid rgba(0,255,136,0.2);
+  border-radius:20px;
+
+  background:rgba(0,0,0,0.2);
+
+  white-space:nowrap;
+
+  transition:0.3s;
+}
+
+.skills-track span:hover{
+  color:#000;
+  background:var(--accent);
+  transform:scale(1.1);
+}
+
+/* ANIMATION */
+@keyframes scrollSkills{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(-50%);
+  }
+}
+
+.skills-dashboard{
+  max-width:1000px;
+  margin:70px auto;
+  padding:0 20px;
+}
+
+.skills-dashboard h2{
+  text-align:center;
+  color:var(--accent);
+  font-size:22px;
+  margin-bottom:25px;
+}
+
+/* GRID */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.skill-card{
+  background:linear-gradient(180deg,var(--panel),#0a0a0a);
+  border:1px solid var(--border);
+  border-radius:12px;
+
+  padding:18px;
+
+  transition:0.3s;
+
+  position:relative;
+  overflow:hidden;
+
+  cursor:pointer;
+}
+
+/* glow line */
+.skill-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:2px;
+  background:var(--accent);
+  opacity:0.25;
+}
+
+/* hover */
+.skill-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:0 0 25px rgba(0,255,136,0.12);
+}
+
+/* icon */
+.skill-card .icon{
+  font-size:22px;
+  display:block;
+  margin-bottom:10px;
+}
+
+/* title */
+.skill-card h3{
+  font-size:15px;
+  margin-bottom:6px;
+}
+
+/* description */
+.skill-card p{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.skills-progress{
+  max-width:800px;
+  margin:70px auto;
+  padding:0 20px;
+}
+
+.skills-progress h2{
+  text-align:center;
+  color:var(--accent);
+  margin-bottom:30px;
+  font-size:22px;
+}
+
+/* SKILL BLOCK */
+.skill{
+  margin-bottom:20px;
+}
+
+/* HEADER */
+.skill-header{
+  display:flex;
+  justify-content:space-between;
+
+  font-size:14px;
+  margin-bottom:8px;
+  color:var(--text);
+}
+
+/* BAR */
+.bar{
+  width:100%;
+  height:10px;
+
+  background:#111;
+  border:1px solid var(--border);
+  border-radius:20px;
+
+  overflow:hidden;
+}
+
+/* FILL */
+.fill{
+  height:100%;
+  width:0;
+
+  border-radius:20px;
+
+  background:linear-gradient(90deg, var(--accent), #00cfff);
+
+  animation:fillAnim 1.5s ease forwards;
+}
+
+/* ANIMATION */
+@keyframes fillAnim{
+  from{
+    width:0;
+  }
+  to{
+    width:var(--w);
+  }
+}
+
+/* LEVELS */
+.html{ --w:90%; }
+.css{ --w:85%; }
+.js{ --w:75%; }
+.react{ --w:65%; }
+.uiux{ --w:70%; }
+
+/* glow effect */
+.fill{
+  box-shadow:0 0 15px rgba(0,255,136,0.3);
+}
+
+<section class="skills-progress">
+
+  <h2>Skills Level</h2>
+
+  <div class="skill">
+
+    <div class="skill-header">
+      <span>HTML5</span>
+      <span>90%</span>
+    </div>
+    <div class="bar">
+      <div class="fill html"></div>
+    </div>
+
+  </div>
+
+  <div class="skill">
+
+    <div class="skill-header">
+      <span>CSS3</span>
+      <span>85%</span>
+    </div>
+    <div class="bar">
+      <div class="fill css"></div>
+    </div>
+
+  </div>
+
+  <div class="skill">
+
+    <div class="skill-header">
+      <span>JavaScript</span>
+      <span>75%</span>
+    </div>
+    <div class="bar">
+      <div class="fill js"></div>
+    </div>
+
+  </div>
+
+  <div class="skill">
+
+    <div class="skill-header">
+      <span>React</span>
+      <span>65%</span>
+    </div>
+    <div class="bar">
+      <div class="fill react"></div>
+    </div>
+
+  </div>
+
+  <div class="skill">
+
+    <div class="skill-header">
+      <span>UI/UX</span>
+      <span>70%</span>
+    </div>
+    <div class="bar">
+      <div class="fill uiux"></div>
+    </div>
+
+    .skill-title{
+  margin:25px 0 10px;
+  color:var(--accent);
+  font-size:14px;
+  font-weight:bold;
+  border-left:3px solid var(--accent);
+  padding-left:10px;
+  opacity:0.9;
+}
+
+/* extra fills */
+.git{ --w:70%; }
+.office{ --w:80%; }
+.figma{ --w:65%; }
+.pr{ --w:80%; }
+.tourism{ --w:70%; }
+.project{ --w:75%; }
+.content{ --w:80%; }
+.cv{ --w:85%; }
+.comm{ --w:90%; }
+.team{ --w:85%; }
+.problem{ --w:80%; }
+.lead{ --w:75%; }
+.pres{ --w:80%; }
+
+  </div>
+
+</section>
+
+
+.stats{
+  max-width:1000px;
+  margin:80px auto;
+  padding:0 20px;
+  text-align:center;
+}
+
+.stats h2{
+  color:var(--accent);
+  font-size:22px;
+  margin-bottom:30px;
+}
+
+/* GRID */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.stat-card{
+  background:linear-gradient(180deg,var(--panel),#0a0a0a);
+  border:1px solid var(--border);
+  border-radius:14px;
+
+  padding:25px;
+
+  box-shadow:0 0 20px rgba(0,255,136,0.08);
+
+  transition:0.3s;
+
+  position:relative;
+  overflow:hidden;
+}
+
+/* glow line */
+.stat-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:2px;
+  background:var(--accent);
+  opacity:0.3;
+}
+
+/* hover */
+.stat-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:0 0 30px rgba(0,255,136,0.15);
+}
+
+/* NUMBER */
+.stat-card h3{
+  font-size:28px;
+  color:var(--accent);
+  margin-bottom:8px;
+}
+
+/* TEXT */
+.stat-card p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+
+.services{
+  max-width:1000px;
+  margin:120px auto;
+  padding:0 20px;
+}
+
+.services h2{
+  font-size:42px;
+  color:#00ffcc;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.services-sub{
+  text-align:center;
+  font-size:14px;
+  color:#aaa;
+  margin-bottom:60px;
+}
+
+/* ROW */
+.service-row{
+  display:flex;
+  justify-content:flex-start;
+  margin-bottom:40px;
+}
+
+/* RIGHT ALIGN */
+.service-row.right{
+  justify-content:flex-end;
+}
+
+/* BOX */
+.service-box{
+  width:70%;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-left:3px solid #00ffcc;
+
+  border-radius:16px;
+  padding:26px;
+
+  transition:0.3s ease;
+}
+
+/* hover */
+.service-box:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 25px rgba(0,255,204,0.15);
+  border-color:#00ffcc;
+}
+
+/* TITLE */
+.service-box h3{
+  font-size:16px;
+  margin-bottom:10px;
+  color:#fff;
+}
+
+/* TEXT */
+.service-box p{
+  font-size:13px;
+  color:#bbb;
+  line-height:1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .service-box{
+    width:100%;
+  }
+
+  .service-row,
+  .service-row.right{
+    justify-content:center;
+  }
+}
+
+.service-row{
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 0.7s ease;
+}
+
+/* لما يظهر */
+.service-row.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- الصورة والاسم -->
+    <img src="k.jpeg" alt="Karim Abd Elkarim" class="profile-pic" />
+    <h1>Karim Abd Elkarim</h1>
+
+    <!-- النبذة -->
+    <section class="about">
+      <p>
+        I’m Karim Abd Elkarim, a student at Thebes Technological University – Department of Tourism and Travel.
+      </p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+      <div class="read-more-content">
+        <p>
+          I am always striving to develop myself both academically and professionally by engaging in various activities and initiatives.
+          I have participated in several youth organizations, including Life Makers Foundation (Media and PR Committees), URI – PR Committee, Greenish Club, Enactus, and Young Egyptians Organization – Ministry of Youth and Sports.
+          I have also received scientific research training through the SRT program and took part in projects aimed at promoting cultural tourism through innovation.
+        </p>
+      </div>
+    </section>
+
+<section class="services" id="what-i-do">
+
+  <h2>What I Do</h2>
+
+  <p class="services-sub">
+    Tourism-focused digital experience designer & operations support specialist
+  </p>
+
+  <!-- ITEM 1 -->
+  <div class="service-row core">
+    <div class="service-box">
+      <h3>Digital Tourism Experiences</h3>
+      <p>Designing interactive cultural experiences that modernize tourism storytelling and engagement.</p>
+    </div>
+  </div>
+
+  <!-- ITEM 2 -->
+  <div class="service-row right core">
+    <div class="service-box">
+      <h3>Tourism Operations Support</h3>
+      <p>Assisting in organizing tourism activities, coordination, and execution of cultural projects.</p>
+    </div>
+  </div>
+
+  <!-- ITEM 3 -->
+  <div class="service-row core">
+    <div class="service-box">
+      <h3>Presentation Design</h3>
+      <p>Creating structured presentations for academic, tourism, and business communication.</p>
+    </div>
+  </div>
+
+  <!-- ITEM 4 -->
+  <div class="service-row right">
+    <div class="service-box">
+      <h3>Digital Tools & Workflow</h3>
+      <p>Using digital tools to support documentation, organization, and workflow systems.</p>
+    </div>
+  </div>
+
+  <!-- ITEM 5 -->
+  <div class="service-row">
+    <div class="service-box">
+      <h3>Administration & Back Office</h3>
+      <p>Handling structured administrative work with accuracy and organization.</p>
+    </div>
+  </div>
+
+  <!-- ITEM 6 -->
+  <div class="service-row right">
+    <div class="service-box">
+      <h3>Microsoft Office Expertise</h3>
+      <p>Professional use of Word, Excel, and PowerPoint for structured work and reporting.</p>
+    </div>
+  </div>
+
+</section>
+
+    <!-- المهارات -->
+   <section class="skills-progress">
+
+  <h2>Skills Level</h2>
+
+  <!-- TECHNICAL -->
+  <div class="skill-title">Technical Skills</div>
+
+  <div class="skill">
+    <div class="skill-header"><span>HTML5</span><span>90%</span></div>
+    <div class="bar"><div class="fill html"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>CSS3</span><span>85%</span></div>
+    <div class="bar"><div class="fill css"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>JavaScript (Basics)</span><span>75%</span></div>
+    <div class="bar"><div class="fill js"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>React.js</span><span>65%</span></div>
+    <div class="bar"><div class="fill react"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Git & GitHub</span><span>70%</span></div>
+    <div class="bar"><div class="fill git"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Microsoft Office</span><span>80%</span></div>
+    <div class="bar"><div class="fill office"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Canva & Figma (Basic)</span><span>65%</span></div>
+    <div class="bar"><div class="fill figma"></div></div>
+  </div>
+
+  <!-- PROFESSIONAL -->
+  <div class="skill-title">Professional Skills</div>
+
+  <div class="skill">
+    <div class="skill-header"><span>PR & Media</span><span>80%</span></div>
+    <div class="bar"><div class="fill pr"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Tourism Systems (Amadeus Basics)</span><span>70%</span></div>
+    <div class="bar"><div class="fill tourism"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Project Planning</span><span>75%</span></div>
+    <div class="bar"><div class="fill project"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Content Management</span><span>80%</span></div>
+    <div class="bar"><div class="fill content"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>CV & Resume Design</span><span>85%</span></div>
+    <div class="bar"><div class="fill cv"></div></div>
+  </div>
+
+  <!-- SOFT SKILLS -->
+  <div class="skill-title">Soft Skills</div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Communication</span><span>90%</span></div>
+    <div class="bar"><div class="fill comm"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Teamwork</span><span>85%</span></div>
+    <div class="bar"><div class="fill team"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Problem Solving</span><span>80%</span></div>
+    <div class="bar"><div class="fill problem"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Leadership</span><span>75%</span></div>
+    <div class="bar"><div class="fill lead"></div></div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header"><span>Presentation Skills</span><span>80%</span></div>
+    <div class="bar"><div class="fill pres"></div></div>
+  </div>
+
+</section>
+
+<section class="timeline">
+
+  <h2>My Journey</h2>
+
+  <div class="timeline-container">
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Life Makers Foundation</h3>
+        <p>Media & PR Committee - Developed communication and media skills.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>URI Organization</h3>
+        <p>Public Relations Committee - Enhanced teamwork and outreach experience.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Enactus Projects</h3>
+        <p>Entrepreneurship & Innovation - Worked on real-world impact projects.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>SRT Program</h3>
+        <p>Scientific Research Training - Academic research and analytical skills.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Youth & Sports Ministry</h3>
+        <p>Young Egyptians Organization - Leadership and public engagement.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section class="projects">
+
+  <h2>My Projects</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-frame">
+        <img src="icon.png" alt="Project 1">
+      </div>
+      <h3>Smart Productivity Workspace</h3>
+      <p>Task management system with Pomodoro timer</p>
+      <a href="https://karimoop9013.github.io/TIME-MANEGMANT/" target="_blank">View Live</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-frame">
+        <img src="xx.jpeg" alt="Project 2">
+      </div>
+      <h3>QR Code Generator</h3>
+      <p>Simple tool to generate QR codes from text, links, and data instantly.</p>
+      <a href="https://karimoop9013.github.io/ScanX/" target="_blank">View Live</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-frame">
+        <img src="ww.jpeg" alt="Project 3">
+      </div>
+      <h3>Weather App</h3>
+      <p>Real-time weather app showing temperature, humidity, and forecasts for any location.</p>
+      <a href="https://weather-app-self-five-51.vercel.app" target="_blank">View Live</a>
+    </div>
+
+<div class="project-card">
+      <div class="project-frame">
+        <img src="to.jpeg" alt="Project 3">
+      </div>
+      <h3>To Do App</h3>
+      <p>Task manager app to add, edit, and organize daily tasks easily.</p>
+      <a href="https://to-do-puce-rho.vercel.app/">View Live</a>
+    </div>
+
+
+    <div class="project-card">
+      <div class="project-frame">
+        <img src="uri.png" alt="Project 3">
+      </div>
+      <h3>VR Tourism Project</h3>
+      <p>Interactive cultural tourism experience</p>
+      <a href="https://karimoop9013.github.io/URI/">View Live</a>
+    </div>
+
+
+    <div class="project-card">
+      <div class="project-frame">
+        <img src="icon.png.jpeg" alt="Project 3">
+      </div>
+      <h3>Expense Tracker</h3>
+      <p>Personal finance tracking dashboard</p>
+      <a href="https://karimoop9013.github.io/SpendWise/">View Live</a>
+    </div>
+
+<div class="project-card">
+      <div class="project-frame">
+        <img src="Focus Timer.jpeg" alt="Project 3">
+      </div>
+      <h3>Focus Timer</h3>
+      <p>A simple interactive timer that tracks your focus time without limits, helping you stay productive and monitor every work session.</p>
+      <a href="https://karimabdelkarim9013-debug.github.io/timer/">View Live</a>
+    </div>
+
+<div class="project-card">
+      <div class="project-frame">
+        <img src="messi.jpeg" alt="Project 3">
+      </div>
+      <h3>Lionel Messi – Profile</h3>
+      <p>An interactive app showcasing Lionel Messi’s complete profile, including career stats, achievements, highlights, and detailed information about his football journey.</p>
+      <a href="https://karimabdelkarim9013-debug.github.io/GOAT/">View Live</a>
+    </div>
+
+  </div>
+
+</section>
+    
+    <!-- تواصل مباشر -->
+    <section class="contact">
+      <h2>Contact Me</h2>
+      <form action="https://formspree.io/f/myzpbalk" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required rows="5"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- زرار يودي لصفحة البورتفوليو -->
+    <a href="portfolio.html" class="portfolio-btn">View Portfolio</a>
+
+  </div>
+
+  <script>
+    function toggleReadMore(btn) {
+      const content = btn.nextElementSibling;
+      if (content.classList.contains("show")) {
+        content.classList.remove("show");
+        setTimeout(() => content.style.display = "none", 500);
+        btn.textContent = "Read More";
+      } else {
+        content.style.display = "block";
+        setTimeout(() => content.classList.add("show"), 10);
+        btn.textContent = "Read Less";
+      }
+    }
+  </script>
+
+<script>
+const counters = document.querySelectorAll(".counter");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const counter = entry.target;
+      const updateCount = () => {
+        const target = +counter.getAttribute("data-target");
+        const count = +counter.innerText;
+
+        const speed = 30;
+
+        if(count < target){
+          counter.innerText = count + 1;
+          setTimeout(updateCount, speed);
+        } else {
+          counter.innerText = target;
+        }
+      };
+
+      updateCount();
+      observer.unobserve(counter);
+    }
+  });
+});
+
+counters.forEach(counter => {
+  observer.observe(counter);
+});
+</script>
+
+<script>
+const rows = document.querySelectorAll(".service-row");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+rows.forEach(row => observer.observe(row));
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const rows = document.querySelectorAll(".service-row");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  rows.forEach(row => {
+    observer.observe(row);
+  });
+
+});
+</script>
+
+</body>
+</html>
