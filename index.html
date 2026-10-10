@@ -54,8 +54,8 @@ body{
   display:block;
   margin:0 auto;
 
-  width:170px;   /* 🔥 أكبر */
-  height:170px;
+  width:200px;   /* 🔥 أكبر */
+  height:200px;
 
   border-radius:50%;
   border:2px solid var(--accent);
@@ -934,26 +934,398 @@ button[type="submit"]:hover{
   transform:translateY(0);
 }
 
+/* =========================================
+   PROJECTS — PREMIUM PORTFOLIO STYLE
+========================================= */
+
+.projects {
+  padding: 90px 0;
+  position: relative;
+}
+
+
+/* SECTION TITLE */
+
+.projects > h2 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 45px;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #fff;
+}
+
+.projects > h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 45px;
+  height: 3px;
+  background: #00ff88;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
+}
+
+
+/* =========================================
+   PROJECT GRID
+========================================= */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+
+/* =========================================
+   PROJECT CARD
+========================================= */
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.045),
+      rgba(255,255,255,0.012)
+    );
+
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+
+  backdrop-filter: blur(10px);
+}
+
+
+/* CARD HOVER */
+
+.project-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(0,255,136,0.28);
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.35),
+    0 0 35px rgba(0,255,136,0.05);
+}
+
+
+/* =========================================
+   PROJECT IMAGE
+========================================= */
+
+.project-frame {
+  position: relative;
+
+  width: 100%;
+  height: 260px;
+
+  overflow: hidden;
+
+  background: #070c09;
+}
+
+
+/* IMAGE */
+
+.project-frame img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition:
+    transform 0.8s cubic-bezier(.2,.8,.2,1),
+    filter 0.5s ease;
+}
+
+
+/* IMAGE HOVER */
+
+.project-card:hover .project-frame img {
+  transform: scale(1.07);
+
+  filter:
+    brightness(0.72)
+    saturate(1.08);
+}
+
+
+/* =========================================
+   IMAGE OVERLAY
+========================================= */
+
+.project-frame::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(5,11,8,0.85),
+      rgba(5,11,8,0.05) 65%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   PROJECT NUMBER
+========================================= */
+
+.project-frame::before {
+  content: "";
+
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: rgba(5,11,8,0.7);
+
+  border: 1px solid rgba(0,255,136,0.2);
+
+  color: #00ff88;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  backdrop-filter: blur(8px);
+
+  z-index: 2;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.project-card h3 {
+  margin: 23px 24px 9px;
+
+  color: #fff;
+
+  font-size: 21px;
+  font-weight: 750;
+
+  letter-spacing: -0.3px;
+
+  transition: color 0.3s ease;
+}
+
+.project-card:hover h3 {
+  color: #00ff88;
+}
+
+
+.project-card p {
+  margin: 0 24px 22px;
+
+  max-width: 90%;
+
+  color: rgba(255,255,255,0.58);
+
+  font-size: 14px;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================
+   VIEW LIVE BUTTON
+========================================= */
+
+.project-card a {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  margin: 0 24px 25px;
+
+  padding: 10px 15px;
+
+  color: #fff;
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  border-radius: 9px;
+
+  background: rgba(255,255,255,0.025);
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  transition:
+    0.3s ease;
+}
+
+
+.project-card a::after {
+  content: "↗";
+
+  color: #00ff88;
+
+  transition: transform 0.3s ease;
+}
+
+
+.project-card a:hover {
+  background: rgba(0,255,136,0.08);
+
+  border-color: rgba(0,255,136,0.35);
+
+  color: #00ff88;
+}
+
+
+.project-card a:hover::after {
+  transform: translate(3px,-3px);
+}
+
+
+/* =========================================
+   SUBTLE TOP LINE
+========================================= */
+
+.project-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 12%;
+
+  width: 76%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(0,255,136,0.35),
+      transparent
+    );
+
+  opacity: 0;
+
+  transition: opacity 0.4s ease;
+
+  z-index: 5;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-frame {
+    height: 280px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .projects {
+    padding: 65px 0;
+  }
+
+  .projects > h2 {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
+
+  .projects-grid {
+    gap: 22px;
+  }
+
+  .project-frame {
+    height: 220px;
+  }
+
+  .project-card h3 {
+    margin: 20px 20px 8px;
+    font-size: 19px;
+  }
+
+  .project-card p {
+    margin: 0 20px 20px;
+    font-size: 13px;
+  }
+
+  .project-card a {
+    margin-left: 20px;
+    margin-bottom: 21px;
+  }
+
+}
+
   </style>
 </head>
 <body>
 
   <div class="container">
     <!-- الصورة والاسم -->
-    <img src="k.jpeg" alt="Karim Abd Elkarim" class="profile-pic" />
+    <img src="707.jpeg" alt="Karim Abd Elkarim" class="profile-pic" />
     <h1>Karim Abd Elkarim</h1>
 
     <!-- النبذة -->
     <section class="about">
       <p>
-        I’m Karim Abd Elkarim, a student at Thebes Technological University – Department of Tourism and Travel.
+        I’m Karim Abd Elkarim, from Beheira, Egypt, and a Tourism and Travel student at Thebes Technological University.
       </p>
       <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
       <div class="read-more-content">
         <p>
-          I am always striving to develop myself both academically and professionally by engaging in various activities and initiatives.
-          I have participated in several youth organizations, including Life Makers Foundation (Media and PR Committees), URI – PR Committee, Greenish Club, Enactus, and Young Egyptians Organization – Ministry of Youth and Sports.
-          I have also received scientific research training through the SRT program and took part in projects aimed at promoting cultural tourism through innovation.
+          I’m a Freelance Front-End Developer with a passion for building modern, responsive, and purposeful digital experiences. My professional skill set also extends to Graphic Design, Voice Over, and Logistics, allowing me to combine technology, creativity, communication, and execution.
+
+With a background in Tourism and a growing foundation in technology, I’m particularly interested in the intersection between both fields — creating digital solutions that make tourism more innovative, accessible, and engaging.
+
+For me, every project is more than just a task. It’s an opportunity to learn, create, solve problems, and turn an idea into something real.
         </p>
       </div>
     </section>
@@ -969,48 +1341,57 @@ button[type="submit"]:hover{
   <!-- ITEM 1 -->
   <div class="service-row core">
     <div class="service-box">
-      <h3>Digital Tourism Experiences</h3>
-      <p>Designing interactive cultural experiences that modernize tourism storytelling and engagement.</p>
+      <h3>Front-End Development</h3>
+      <p>Building modern, responsive, and user-focused websites with clean interfaces and engaging digital experiences.</p>
     </div>
   </div>
 
   <!-- ITEM 2 -->
   <div class="service-row right core">
     <div class="service-box">
-      <h3>Tourism Operations Support</h3>
-      <p>Assisting in organizing tourism activities, coordination, and execution of cultural projects.</p>
+      <h3>UI & Graphic Design </h3>
+      <p>Creating clean and purposeful visual designs, interfaces, and digital content that combine creativity with usability.
+</p>
     </div>
   </div>
 
   <!-- ITEM 3 -->
   <div class="service-row core">
     <div class="service-box">
-      <h3>Presentation Design</h3>
-      <p>Creating structured presentations for academic, tourism, and business communication.</p>
+      <h3>Tourism & Digital Experiences</h3>
+      <p>Combining technology and tourism to develop innovative digital experiences for cultural storytelling, tourism engagement, and heritage exploration.</p>
     </div>
   </div>
 
   <!-- ITEM 4 -->
   <div class="service-row right">
     <div class="service-box">
-      <h3>Digital Tools & Workflow</h3>
-      <p>Using digital tools to support documentation, organization, and workflow systems.</p>
+      <h3>Voice Over & Media</h3>
+      <p>Creating voice-over content and supporting media production with a focus on clear communication and engaging presentation.</p>
     </div>
   </div>
 
   <!-- ITEM 5 -->
   <div class="service-row">
     <div class="service-box">
-      <h3>Administration & Back Office</h3>
-      <p>Handling structured administrative work with accuracy and organization.</p>
+      <h3>Logistics & Event Operations</h3>
+      <p>Supporting events and projects through planning, coordination, organization, and smooth on-ground execution.</p>
     </div>
   </div>
 
   <!-- ITEM 6 -->
   <div class="service-row right">
     <div class="service-box">
-      <h3>Microsoft Office Expertise</h3>
-      <p>Professional use of Word, Excel, and PowerPoint for structured work and reporting.</p>
+      <h3>Administration & Digital Workflow</h3>
+      <p>Managing documentation, data, and digital workflows using structured systems and professional tools.</p>
+    </div>
+  </div>
+
+  <!-- ITEM 5 -->
+  <div class="service-row">
+    <div class="service-box">
+      <h3>Microsoft Office</h3>
+      <p>Professional use of Word, Excel, and PowerPoint for documentation, presentations, organization, and reporting.</p>
     </div>
   </div>
 
@@ -1022,25 +1403,25 @@ button[type="submit"]:hover{
   <h2>Skills Level</h2>
 
   <!-- TECHNICAL -->
-  <div class="skill-title">Technical Skills</div>
+  <div class="skill-title">Technical & Creative Skills</div>
 
   <div class="skill">
-    <div class="skill-header"><span>HTML5</span><span>90%</span></div>
+    <div class="skill-header"><span>Front-End Development</span><span>90%</span></div>
     <div class="bar"><div class="fill html"></div></div>
   </div>
 
   <div class="skill">
-    <div class="skill-header"><span>CSS3</span><span>85%</span></div>
+    <div class="skill-header"><span>Responsive Web Design</span><span>85%</span></div>
     <div class="bar"><div class="fill css"></div></div>
   </div>
 
   <div class="skill">
-    <div class="skill-header"><span>JavaScript</span><span>75%</span></div>
+    <div class="skill-header"><span>UI/UX Design</span><span>75%</span></div>
     <div class="bar"><div class="fill js"></div></div>
   </div>
 
   <div class="skill">
-    <div class="skill-header"><span>React.js</span><span>65%</span></div>
+    <div class="skill-header"><span>Blender</span><span>65%</span></div>
     <div class="bar"><div class="fill react"></div></div>
   </div>
 
@@ -1126,24 +1507,27 @@ button[type="submit"]:hover{
     <div class="timeline-item">
       <div class="dot"></div>
       <div class="content">
-        <h3>Life Makers Foundation</h3>
-        <p>Media & PR Committee - Developed communication and media skills.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="dot"></div>
-      <div class="content">
         <h3>URI Organization</h3>
-        <p>Public Relations Committee - Enhanced teamwork and outreach experience.</p>
+        <p>President — Suez Canal Branch
+Led branch operations, coordinated teams, and developed leadership and organizational experience.</p>
       </div>
     </div>
 
     <div class="timeline-item">
       <div class="dot"></div>
       <div class="content">
-        <h3>Enactus Projects</h3>
-        <p>Entrepreneurship & Innovation - Worked on real-world impact projects.</p>
+        <h3>TEDx STEM Luxor</h3>
+        <p>Head of Public Relations
+Led PR operations, managed communication, and developed strong outreach and partnership skills.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Life Makers Foundation</h3>
+        <p>Activation File Lead — Luxor
+Managed volunteer activation, follow-up, engagement, and participation across activities.</p>
       </div>
     </div>
 
@@ -1158,8 +1542,101 @@ button[type="submit"]:hover{
     <div class="timeline-item">
       <div class="dot"></div>
       <div class="content">
-        <h3>Youth & Sports Ministry</h3>
-        <p>Young Egyptians Organization - Leadership and public engagement.</p>
+        <h3>Sonaa El Hayah Club — Thebes Technological University</h3>
+        <p>Vice President
+Supported club leadership, team coordination, and the execution of student activities.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>URI Organization — Port Said Branch</h3>
+        <p>Head of Public Relations
+Led PR activities and strengthened communication, outreach, and team management skills.</p>
+      </div>
+    </div>
+
+<div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>EYE Organization</h3>
+        <p>Head of Public Relations
+Led the PR team and developed experience in communication, outreach, and organizational representation.</p>
+      </div>
+    </div>
+
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Green Vision</h3>
+        <p>Vice Head of Public Relations
+Supported PR leadership and developed experience in external communication and relationship building.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>B-SciM</h3>
+        <p>Vice Media
+Supported media operations, content coordination, and event coverage</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>YLY</h3>
+        <p>Public Relations 
+Developed communication, teamwork, and public engagement skills through youth activities.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Greenish Club — Suez Canal Branch</h3>
+        <p>Head of Media
+Led media activities and developed skills in content, coverage, and team coordination.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>FA Model LU</h3>
+        <p>Logistics Member
+Developed practical experience in event logistics, coordination, and team operations.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Enactus</h3>
+        <p>Member
+Participated in entrepreneurship and innovation activities focused on real-world impact.
+</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Zawaher</h3>
+        <p>Member
+Contributed to youth activities and teamwork initiatives.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Union of Bishabha</h3>
+        <p>Member
+Participated in community and youth-oriented activities.</p>
       </div>
     </div>
 
@@ -1248,6 +1725,8 @@ button[type="submit"]:hover{
       <p>An interactive app showcasing Lionel Messi’s complete profile, including career stats, achievements, highlights, and detailed information about his football journey.</p>
       <a href="https://karimabdelkarim9013-debug.github.io/GOAT/">View Live</a>
     </div>
+
+    
 
   </div>
 
